@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'front.css' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'img/cload.png' %}" style="width: 50%;">
+
+</head>
+<body>
+    <div id="select_pred">
+        <form action="#" id="select_form" style="font-size: 1dvw;">
+            {% csrf_token %}
+            <label for="location" >tomorrow temperature:</label>
+            <select name="location" id="location" style="width: 6dvw;height: 2dvw;vertical-align: middle;font-size: 1dvw;">
+                <option value="Yasuj" >Yasuj</option>
+                <option value="Esfahan" >Esfahan</option>
+            </select>
+            <input type="button" value="✅" style="background-color:rgb(186, 212, 235,0.3);opacity: 10px;border-radius: 5px;background-color: rgb(47, 207, 95);width: 2dvw;height: 2dvw;vertical-align: middle;font-size: 1.2dvw;" onclick="send_to_django()">
+        </form>
+    </div>
+    <div dir="ltr" class="container" style="z-index: 0;">
+        <p class="time" style="display: inline;float: left;position: absolute;top: 5%;left: 5%;"><span id="date">{{date}}</span> <br><span id="time">{{time}}</span><br><span id="day">{{day}}</span><br><br><br><br><br><br><br><br><br><div style="position: absolute;bottom: 5%;left: 5%;"><span id="pre" style="font-size: 0.9dvw;">Tomorrow -> </span>&nbsp;&nbsp;&nbsp;<span id="min_pred" style="font-size: 1.3dvw;">{{min_pred}}</span>&nbsp;&nbsp;<span id="max_pred" style="font-size: 1.3dvw;">{{ max_pred }}</span></div></p>
+        <p style="display: inline;vertical-align: middle;font-family:serif;font-size: 7dvw;position: relative;left: 0.5vw;text-shadow: 10px 10px 25px;bottom: 43%;position: absolute;top: 20%;left: 40%;"><b><span id="temperature" style="text-shadow: 10px 10px 16px black;">{{temperature}}</span></b></p>
+        <p style="display: inline;vertical-align: middle;font-family:serif;font-size: 7dvw;position: relative;left: 0.5vw;text-shadow: 10px 10px 25px;bottom: 55%;left: -2%;position: absolute;bottom: 35%;;left: 42%;"><b><span id="humidity" style="font-size: 1dvw;float: left;text-shadow: 5px 5px 10px black;">{{humidity}}</span></b></p>
+    </div>
+
+<div id="load" style="z-index:1;position: fixed;right: 0%;width: 100%;height: 100%;background-color: rgb(0, 0, 0);">
+    <div id="ring" class="ring">Loading
+        <span class="sp"></span>
+        </div>
+</div>
+<script src="{% static 'jj.js' %}"></script>
+</body>
+</html>
